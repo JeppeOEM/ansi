@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+body {
+  background-color: black;
+  font-family: monospace;
+  /* padding: 20px; */
+}
+
+.center-flex{
+display: flex;
+flex-direction: row;
+}
+
+.center-flex {
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* ensures children match height of tallest item */
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .ascii-logo {
+    white-space: pre;
+    text-align: center;
+    min-width: fit-content;
+  }
+  
+  .left-box,
+  .right-box { 
+    color: #555555;
+    flex: 1;
+  }
