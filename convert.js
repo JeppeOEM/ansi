@@ -73,13 +73,14 @@ function process(rawString) {
 }
 let arr = process(content)
 console.log(escapedString, "content")
-console.log(arr[2],"arrraayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy")
+console.log(arr,"arrraayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy")
 for (let i = 0; i < arr.length; i++){
 
 console.log(i,"$$$$$$$$$$$$$$$$$$$$$$$")   
 console.log(arr[i])
 }
 
+console.log(content)
 
 
 const ansiStyles = {
