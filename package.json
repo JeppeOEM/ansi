@@ -1,0 +1,16 @@
+{
+  "name": "ansi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "ansi-html": "^0.0.9",
+    "ansi-to-html": "^0.7.2",
+    "iconv-lite": "^0.6.3"
+  }
+}
