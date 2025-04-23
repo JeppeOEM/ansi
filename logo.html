@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="center-flex">
-<div id="left-box">
+<div class="left-box">
   gg
 </div>
 <pre id="ascii-logo">
@@ -29,49 +29,76 @@
 <b><span style="color:#555555">$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$SsS$$Ss$$$$$$$$$$$$$$$$$$$$$$$$$$$$</span></b>
 </pre>
 
-<div id="right-box">
+<div class="right-box">
   gg
 </div>
 
 </div>  
 </body>
 <script>
-  function fillBoxes() {
-    const leftBox = document.getElementById("left-box");
-    const rightBox = document.getElementById("right-box");
-
-    // Clear previous contents
-    leftBox.textContent = "";
-    rightBox.textContent = "";
-
-    // Get computed font size and line height
-    const style = getComputedStyle(leftBox);
-    const fontWidth = getTextWidth("$", style);
-    const fontHeight = parseFloat(style.lineHeight);
-
-    const boxHeight = leftBox.clientHeight;
-    const boxWidth = leftBox.clientWidth;
-
-    const rows = Math.floor(boxHeight / fontHeight);
-    const cols = Math.floor(boxWidth / fontWidth);
-
-    const line = "$".repeat(cols);
-    const block = Array.from({ length: rows }, () => line).join("\n");
-
-    leftBox.textContent = block;
-    rightBox.textContent = block;
-    console.log("ggg")
+function fillWithDollars() {
+  const asciiLogo = document.getElementById("ascii-logo");
+  const asciiLines = asciiLogo.innerText.trim().split("\n").length;
+  
+  // Create a measurement span to calculate the exact width of a dollar sign
+  function getCharWidth(container) {
+    // Create temporary span to measure dollar sign width in the same font as container
+    const span = document.createElement("span");
+    span.style.visibility = "hidden"; // Make it invisible
+    span.style.position = "absolute"; // Remove from flow
+    span.style.whiteSpace = "nowrap"; // Prevent wrapping
+    
+    // Copy the font properties from the container
+    const containerStyle = window.getComputedStyle(container);
+    span.style.font = containerStyle.font;
+    span.style.fontSize = containerStyle.fontSize;
+    span.style.fontFamily = containerStyle.fontFamily;
+    
+    // Add the dollar sign to measure
+    span.textContent = "$";
+    
+    // Add to document to measure
+    document.body.appendChild(span);
+    const width = span.getBoundingClientRect().width;
+    document.body.removeChild(span);
+    
+    return width;
   }
-
-  // Helper: measure character width
-  function getTextWidth(text, style) {
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-    ctx.font = `${style.fontSize} ${style.fontFamily}`;
-    return ctx.measureText(text).width;
+  
+  function updateDollarFill() {
+    // Get the containers
+    const leftBox = document.querySelector(".left-box");
+    const rightBox = document.querySelector(".right-box");
+    
+    // Calculate how many dollar signs fit per line based on container width and exact character width
+    const leftCharWidth = getCharWidth(leftBox);
+    const rightCharWidth = getCharWidth(rightBox);
+    
+    // Calculate max number of $ that fit in each container
+    const leftWidth = Math.floor(leftBox.clientWidth / leftCharWidth);
+    const rightWidth = Math.floor(rightBox.clientWidth / rightCharWidth);
+    
+    // Create dollar blocks that fit the current container sizes
+    const leftDollarLine = "$".repeat(Math.max(1, leftWidth));
+    const rightDollarLine = "$".repeat(Math.max(1, rightWidth));
+    
+    // Generate the full content with same number of lines as the ASCII logo
+    const leftDollarBlock = Array(asciiLines).fill(leftDollarLine).join("\n");
+    const rightDollarBlock = Array(asciiLines).fill(rightDollarLine).join("\n");
+    
+    // Update the content
+    leftBox.innerText = leftDollarBlock;
+    rightBox.innerText = rightDollarBlock;
   }
+  
+  // Initial fill
+  updateDollarFill();
+  
+  // Update when window is resized
+  window.addEventListener("resize", updateDollarFill);
+}
 
-  window.addEventListener("load", fillBoxes);
-  window.addEventListener("resize", fillBoxes);
+window.addEventListener("load", fillWithDollars);
 </script>
+
 </html>

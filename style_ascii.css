@@ -23,12 +23,15 @@ flex-direction: row;
     box-sizing: border-box;
   }
   
-  .ascii-logo {
+  #ascii-logo {
     white-space: pre;
     text-align: center;
     min-width: fit-content;
   }
   
+  .left-box{
+    text-align: right;
+  }
   .left-box,
   .right-box { 
     color: #555555;
