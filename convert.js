@@ -2,7 +2,7 @@ const fs = require('fs');
 const iconv = require('iconv-lite');
 
 // Read and decode the ANSI art file
-const buffer = fs.readFileSync('ns2.ans');
+const buffer = fs.readFileSync('noice.ans');
 var Convert = require('ansi-to-html');
 var convert = new Convert();
 
