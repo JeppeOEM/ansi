@@ -2,7 +2,7 @@ const fs = require('fs');
 const iconv = require('iconv-lite');
 
 // Read and decode the ANSI art file
-const buffer = fs.readFileSync('noice.ans');
+const buffer = fs.readFileSync('1CODE_GREY.ans');
 var Convert = require('ansi-to-html');
 var convert = new Convert();
 
@@ -40,11 +40,15 @@ const finalHtml = `
   <title>ANSI Art</title>
   <style>
     body {
-      background-color: black;
+      background-color: green;
       color: white;
       font-family: monospace;
       white-space: pre;
       padding: 20px;
+    }
+
+    #ansi-art span {
+    background-color: black;
     }
   </style>
 </head>
