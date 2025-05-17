@@ -2,7 +2,7 @@ const fs = require('fs');
 const iconv = require('iconv-lite');
 
 // Read and decode the ANSI art file
-const buffer = fs.readFileSync('1CODE_GREY.ans');
+const buffer = fs.readFileSync('leftlink.ans');
 var Convert = require('ansi-to-html');
 var convert = new Convert();
 
