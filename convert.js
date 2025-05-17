@@ -2,7 +2,7 @@ const fs = require('fs');
 const iconv = require('iconv-lite');
 
 // Read and decode the ANSI art file
-const buffer = fs.readFileSync('1CODE_GREY.ans');
+const buffer = fs.readFileSync("LINKS WIP.ans");
 var Convert = require('ansi-to-html');
 var convert = new Convert();
 
@@ -18,7 +18,7 @@ for (let i = 0; i < rawString.length; i++) {
   if (charCode < 32 || charCode === 127) { // Control characters
     escapedString += `\\x${charCode.toString(16).padStart(2, '0')}`;
     //console.log(`\\x${charCode.toString(16).padStart(2, '0')}`);
-    
+
   } else {
     escapedString += rawString[i];
   }
