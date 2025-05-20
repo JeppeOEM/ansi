@@ -2,9 +2,9 @@ const fs = require('fs');
 const iconv = require('iconv-lite');
 
 // Read and decode the ANSI art file
-const buffer = fs.readFileSync('leftlink.ans');
+const buffer = fs.readFileSync('linkscolor.ans');
 var Convert = require('ansi-to-html');
-var convert = new Convert();
+var convert = new Convert()
 
 // Option 1: Convert to hex representation to see all bytes
 // console.log('Hex representation:');
